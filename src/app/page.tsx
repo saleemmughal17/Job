@@ -42,7 +42,7 @@ const page = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {/* Local Image Example from public/assets */}
           <Image 
-            src="./asserts/businessman-1765664.png" // Correct Path to Image in public folder
+            src="/asserts/businessman-1765664.png" // Correct Path to Image in public folder
             alt="Businessman" 
             width={500}  // Set width for Image
             height={300} // Set height for Image
@@ -51,7 +51,7 @@ const page = () => {
           
           {/* Another image with relative path */}
           <Image 
-            src="./asserts/job-2860035.jpg" 
+            src="/asserts/job-2860035.jpg" 
             alt="Career Growth" 
             width={500}
             height={300}
@@ -59,7 +59,7 @@ const page = () => {
           />
           
           <Image 
-            src="./asserts/smartphone-1184865.png" 
+            src="/asserts/smartphone-1184865.png" 
             alt="Team Collaboration"
             width={500}
             height={300}
