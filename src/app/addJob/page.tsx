@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
 export default function AddJob() {
   const [form, setForm] = useState({
     title: '',
@@ -39,12 +40,12 @@ export default function AddJob() {
     <div className='p-2'>
       <h1 className='text-center font-bold'>Add Job</h1>
       <form onSubmit={handleSubmit} className='p-2'>
-        {['title', 'description', 'category', 'location', 'salary'].map((field) => (
+        {['title', 'description', 'category', 'location', 'salary'].map((field: any) => (
           <input
             key={field}
             name={field}
             placeholder={field}
-            value={form[field]}
+            value={form[field as keyof typeof form]} 
             onChange={handleChange}
             required={field !== 'postedById'}
             className="border p-2 mb-2 w-full"

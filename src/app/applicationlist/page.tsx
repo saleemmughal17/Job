@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
 
-const ApplicationList = ({ applications, handleStatusChange }) => {
+const ApplicationList = ({ applications, handleStatusChange }:any) => {
     return (
         <div className="space-y-4 mt-5">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Apply Status</h2>
             
-            {applications.length > 0 ? (
-                applications.map(app => (
+            {applications?.length > 0 ? (
+                applications?.map((app:any) => (
 
                     <div 
                         key={app.id} 

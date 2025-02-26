@@ -18,15 +18,15 @@ export default function Dashboard() {
   }, []);
 
   // Handle Status Change (Accept/Reject)
-  const handleStatusChange = (id, status) => {
+  const handleStatusChange = (id:any, status:string) => {
     console.log(id);
 
     // Corrected the URL with proper syntax and parameters
     axios.put(`/api/update2?id=${id}&status=${status}`)
       .then(() => {
         // Update the status locally after the API call
-        setApplications(prev =>
-          prev.map(app => app.id === id ? { ...app, status } : app)
+        setApplications((prev:any) =>
+          prev.map((app:any) => app.id === id ? { ...app, status } : app)
         );
       })
       .catch(err => console.error(err));

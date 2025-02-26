@@ -3,24 +3,32 @@ import { cookies } from "next/headers";
 import { getIronSession } from "iron-session";
 import { sessionOptions} from "../lib/session";
 
+interface SessionData {
+  user?: {
+    id: number;
+    name:string;
+    email: string;
+    role: string;
+  };
+}  
 
 export async function middleware(req: NextRequest) {
 
   let res = NextResponse.next()
   const cookieStore = await cookies();
 
-  const session = await getIronSession(req, res, sessionOptions);
+  const session = await getIronSession<SessionData>(req, res, sessionOptions);
 
   const token = cookieStore.get("auth_session");
 
-  
-  console.log(session.user)
+
+  // console.log(session.user)
 
   if (!token) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
   const { pathname } = req.nextUrl;
-   if (pathname.startsWith('/admin') && session.user.role !== 'Admin') {
+   if (pathname.startsWith('/admin') && session?.user?.role !== 'Admin') {
     return NextResponse.redirect(new URL('/DashboardUser', req.url));
   }
 
