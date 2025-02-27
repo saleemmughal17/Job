@@ -1,27 +1,36 @@
-"use client"
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { IoBagCheckOutline } from "react-icons/io5";
-import React from 'react';
-import Image from "next/image";  // Import Image from Next.js
+"use client";
+import { GrFormNextLink } from "react-icons/gr";
+import React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import Dashboard from "./DashboardUser/page";
 
 const page = () => {
+  // Example authentication status and role (In real scenario, fetch these dynamically)
+  const isLoggedIn: boolean = true; // Change to false to test button visibility
+  const role: "user" | "admin" = "admin"; // Can be "user", "admin", or any other role
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-white shadow-md rounded-xl">
         <h1 className="text-2xl font-bold text-gray-800">JobFinder</h1>
-        <button className="text-2xl hover:text-blue-500">
-          <IoBagCheckOutline />
-          {/* <Link href="/DashboardUser">Next</Link> */}
-        </button>
+        
+        {/* Conditional Button */}
+       
+          <Link href={role === "admin" ? "/admin" : "/DashboardUser"}>
+            <button className="text-2xl hover:text-blue-500">
+            <GrFormNextLink />
+            </button>
+          </Link>
+   
       </header>
 
       {/* Hero Section */}
       <section className="text-center my-10 bg-blue-500 text-white p-10 rounded-xl">
         <h2 className="text-4xl font-bold">Welcome to JobFinder</h2>
-        <p className="text-lg mt-2">Your one-stop platform to discover, apply, and land your dream job. Browse thousands of job listings and find the perfect opportunity that matches your skills and passion.</p>
+        <p className="text-lg mt-2">
+          Your one-stop platform to discover, apply, and land your dream job. Browse thousands of job listings and find the perfect opportunity that matches your skills and passion.
+        </p>
       </section>
 
       {/* About Section */}
@@ -38,18 +47,18 @@ const page = () => {
       {/* Photography Section */}
       <section className="bg-gray-200 p-6 rounded-xl shadow-lg my-10">
         <h2 className="text-3xl font-bold text-gray-800 text-center">History & Memories</h2>
-        <p className="text-gray-600 text-center mt-4">A glimpse into the journey of job seekers and career milestones.</p>
+        <p className="text-gray-600 text-center mt-4">
+          A glimpse into the journey of job seekers and career milestones.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-          {/* Local Image Example from public/assets */}
           <Image 
-            src="/asserts/businessman-1765664.png" // Correct Path to Image in public folder
+            src="/asserts/businessman-1765664.png" 
             alt="Businessman" 
-            width={500}  // Set width for Image
-            height={300} // Set height for Image
+            width={500}  
+            height={300} 
             className="rounded-lg shadow-md w-full h-64 object-cover"
           />
           
-          {/* Another image with relative path */}
           <Image 
             src="/asserts/job-2860035.jpg" 
             alt="Career Growth" 
@@ -70,6 +79,6 @@ const page = () => {
 
     </div>
   );
-}
+};
 
 export default page;
